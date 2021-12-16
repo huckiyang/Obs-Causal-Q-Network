@@ -1,4 +1,5 @@
-# Causal-Q-Networks
+#  Causal-Inference-Q-Networks
+
 AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 
 - A non-archival and preliminary venue was presented in ICLR 2021 Self-supervision for Reinforcement Learning Workshop, spotlight, long contributed talk
