@@ -9,9 +9,9 @@ AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 
 - note I am working on releasing more Causal Inference Q-Network ablations in process. 
 
-### Example for Causal Inference Q-Network Training
+### 1. Example for Causal Inference Q-Network Training on Cartpole
 
-- Run Causal Inference Q-Network Training
+- Run Causal Inference Q-Network Training (`--network 1` for Treatment Inference Q-network)
 
 ```shell
 python 0-cartpole-main.py --network 1
