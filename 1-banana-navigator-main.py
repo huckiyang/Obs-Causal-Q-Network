@@ -5,7 +5,6 @@ s_currentpath = os.getcwd()
 from unityagents import UnityEnvironment
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument("--beta", type = float, default= 0.40, help="for Atk_C theshold")
 parser.add_argument("--baseline", type = int, default= 0, help= " 0 - with an attack or 1 - yes, use baseline model " )
 parser.add_argument("--Atktype", type = int, default= 1, help= "choose attack (treatment) type, 1 - attack_F, 2 = adversarial")
 parser.add_argument("--causal", type = int, default= 1, help= "0 - Not use treatment info, 1 - use treatment info")
@@ -21,7 +20,10 @@ parser.add_argument("--workid", type = int, default= 10, help= "worker id for Un
 
 args = parser.parse_args()
 
-env_type = "fig_result"
+env = UnityEnvironment(file_name="Banana_Linux_NoVis/Banana.x86_64", worker_id= args.workid )
+
+
+env_type = "fig_result" # path to save the result images
 fig_prefix = "banana_"+ env_type  + ti.strftime("%m%d-%H%M") + '_Trt'+ str(args.Ftype)
 
 if args.baseline == 1:
@@ -46,11 +48,10 @@ import pickle
 import random
 import torch
 from collections import deque
-from algorithms_step.dqn_agent import DQNAgent, DDQNAgent, DDQNPREAgent
+from algorithms_step.banana_agent import DQNAgent, DDQNAgent, DDQNPREAgent
 from algorithms_step.banana_model import SimpleQNetwork
 from algorithms_step.attacker import atk_model
 
-env = UnityEnvironment(file_name="Banana_Linux_NoVis/Banana.x86_64", worker_id= args.workid )
 
 
 # Unity Environments contain brains which are responsible for deciding the actions of their associated agents. Here we check for the first brain available, and set it as the default brain we will be controlling from Python.
@@ -89,7 +90,7 @@ s_model = 'dqn'
 
 # initialize
 agent = DQNAgent(state_size=state_size, action_size=action_size, seed=0, select_network=args.network)
-atker = atk_model(Beta = args.beta, Ftype = args.Ftype)
+atker = atk_model(Beta = 0.4, Ftype = args.Ftype)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 if args.attack_network_path != "":
@@ -176,12 +177,11 @@ for i_episode in range(n_episodes):
     scores_std.append(np.std(scores_window)) # save most recent std dev
     scores_avg.append(np.mean(scores_window)) # save most recent std dev
     scores_atkratio.append(round(cnt/total_cnt,2)) # save the attack ratio
-    loss_book.append(agent.check_loss())    # else:
         #     tmp_log = data_prefix + 'checkpoint_' + s_model +'.pth'# '0626-1919checkpoint_dqn.pth'
         #     agent.qnetwork_local.load_state_dict(torch.load(tmp_log))
     if i_episode % 5 == 0:
         print("With: ",round(100*cnt/total_cnt,2),"% timing attack", end = "\n")
-        print('\rEpisode {}   Score: {:.2f}, Average Score: {:.2f}, Loss: {:.2f}'.format(i_episode, score, np.mean(scores_window), agent.check_loss()))
+        print('\rEpisode {}   Score: {:.2f}, Average Score: {:.2f}'.format(i_episode, score, np.mean(scores_window), ))
     if np.mean(scores_window)>=12.5:
         s_msg = '\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'
         print(s_msg.format(i_episode, np.mean(scores_window)))        
@@ -193,7 +193,7 @@ d_data = {'episodes': i_episode,
           'scores': scores,
           'scores_std': scores_std,
           'scores_avg': scores_avg,
-          'scores_window': scores_window, 'atk_ratio': scores_atkratio, 'loss':loss_book}
+          'scores_window': scores_window, 'atk_ratio': scores_atkratio,}
 pickle.dump(d_data, open('%ssim-data-%s.data' % (data_prefix, s_model), 'wb'))
 
 d_data = pickle.load(open(data_prefix+'sim-data-dqn.data', 'rb'))
@@ -210,7 +210,6 @@ na_raw = np.array(d_data['scores'])
 na_mu = np.array(d_data['scores_avg'])
 na_sigma = np.array(d_data['scores_std'])
 record_attack = np.array(d_data['atk_ratio'])
-loss_r = np.array(d_data['loss'])
 
 # plot the scores
 f, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5), sharex=True, sharey=True)
@@ -232,12 +231,6 @@ ax12.tick_params(axis='y', labelcolor=color)
 ax2.plot(np.arange(len(na_mu)), na_mu)
 ax2.fill_between(np.arange(len(na_mu)), na_mu+na_sigma, na_mu-na_sigma, facecolor='gray', alpha=0.1)
 
-## Note -  For Deep Q Network studies, the relationship between loss and performance is still not very clear. 
-# Feel free if you want to see the loss of CIQs
-# ax22 = ax2.twinx()  # instantiate a second axes that shares the same x-axis
-# ax22.set_ylabel('loss')  # we already handled the x-label with ax1
-# ax22.plot(np.arange(len(loss_r)), loss_r, 'c')
-# ax22.tick_params(axis='y')
 
 if args.evaluate == 1:
     # reset the environment
@@ -313,6 +306,6 @@ ax2.set_title('avg-blue | validation-green:' + str(eva_score/float(eval_num))+'|
     
 f.tight_layout()
 
-f.savefig(fig_prefix + '_dqn.pdf', format='pdf')
+f.savefig( env_type +'/' + fig_prefix + '_dqn.pdf', format='pdf')
 
 env.close()
