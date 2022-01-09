@@ -12,7 +12,7 @@ AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 
 - Run Causal Inference Q-Network Training
 
-```
+```shell
 python 0-cartpole-main.py --network 1
 ```
 
