@@ -176,7 +176,7 @@ Robust Score : 12.5
 
 ## Reference
 
-This fun work was initialzed when Danny and I first read the Causal Variational Model between 2018 to 2019. 
+This fun work was initialzed when [Danny](https://www.linkedin.com/in/danny-hung/) and I first read the Causal Variational Model between 2018 to 2019 with the helps from Dr. [Yi Ouyang](https://scholar.google.com/citations?hl=en&user=dw_Sj_YAAAAJ) and Dr. [Pin-Yu Chen](https://scholar.google.com/citations?user=jxwlCUUAAAAJ&hl=en).
 
 Please consider to reference the paper if you find this work helpful or relative to your research. 
 
