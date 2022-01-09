@@ -92,7 +92,7 @@ This fun work was initialzed when Danny and I first read the Causal Variational 
 
 Please consider to reference the paper if you find this work helpful or relative to your research. 
 
-- A non-archival and preliminary venue was presented in ICLR 2021 Self-supervision for Reinforcement Learning Workshop, spotlight, long contributed talk
+- A non-archival and preliminary venue was presented in ICLR 2021 [Self-supervision for Reinforcement Learning Workshop](https://sslrlworkshop.github.io/), spotlight, long contributed talk
 
 ```bib
 @article{yang2021causal,
