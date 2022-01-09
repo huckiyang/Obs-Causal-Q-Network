@@ -15,7 +15,7 @@ AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 conda env create -f obs-causal-q-conda.yml 
 ```
 
-- option 2 (from a clean python 3.6 and please follow the [setup](https://github.com/udacity/deep-reinforcement-learning#dependencies) of [UnityAgent 3D](https://github.com/Unity-Technologies/ml-agents) environment )
+- option 2 (from a clean python 3.6 and please follow the [setup](https://github.com/udacity/deep-reinforcement-learning#dependencies) of [UnityAgent 3D](https://github.com/Unity-Technologies/ml-agents) environment for Banana Navigator )
 
 ```shell
 pip install torch torchvision torchaudio
