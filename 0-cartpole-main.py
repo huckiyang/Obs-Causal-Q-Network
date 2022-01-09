@@ -68,10 +68,7 @@ n_episodes = 3000
 eps_start = 1.
 eps_end=0.01
 eps_decay=0.998
-# max_t = 5000
 s_model = 'dqn'
-# ratio_t = int(max_t * args.ratio)
-# ratio_t = int((max_t/10) * args.shellratio) 
 
 # initialize
 agent = DQNAgent(state_size=state_size, action_size=action_size, seed=0, select_network=args.network)
@@ -85,7 +82,7 @@ if args.attack_network_path != "":
     attack_network = attack_network.to(device)
     attack_network.eval()
 
-print("C_beta: ", atker.Beta, " T: " + str(args.Atktype), " Use baseline: ", str(args.baseline), " CEVAE: ", str(args.causal), end = "\n")
+print( " Interference Type: " + str(args.Atktype), " Use baseline: ", str(args.baseline), "use CGM: ", str(args.causal), end = "\n")
 
 loss_book = []
 scores = []
@@ -236,9 +233,11 @@ ax2.plot(np.arange(len(na_mu)), na_mu)
 ax2.fill_between(np.arange(len(na_mu)), na_mu+na_sigma, na_mu-na_sigma, facecolor='gray', alpha=0.1)
 ax22 = ax2.twinx()  # instantiate a second axes that shares the same x-axis
 
-ax22.set_ylabel('loss')  # we already handled the x-label with ax1
-ax22.plot(np.arange(len(loss_r)), loss_r, 'c')
-ax22.tick_params(axis='y')
+## Note: in Deep Q Network, the relation between loss and performance is still not very clear. Feel free if you want to see the loss of CIQs
+
+# ax22.set_ylabel('loss')  # we already handled the x-label with ax1
+# ax22.plot(np.arange(len(loss_r)), loss_r, 'c')
+# ax22.tick_params(axis='y')
 
 if args.evaluate == 1:
     # reset the environment
@@ -273,7 +272,7 @@ if args.evaluate == 1:
     state = env.reset()
     eva_agent = DQNAgent(state_size=state_size, action_size=action_size, seed=0, select_network=args.network)
     # load the weights from file
-    eva_log = data_prefix + 'checkpoint_' + s_model +'.pth'# '0626-1919checkpoint_dqn.pth'
+    eva_log = data_prefix + 'checkpoint_' + s_model +'.pth' # '0626-1919checkpoint_dqn.pth'
     eva_agent.qnetwork_local.load_state_dict(torch.load(eva_log))
     robust_score = 0.
     for i in range(eval_num):
@@ -282,9 +281,9 @@ if args.evaluate == 1:
                 state, _ = atker.Atck_F(state, True)
 #                 print(state,"shape:" ,state.shape)
             action, act_vals = eva_agent.act(state, eps=0.00)
-            next_state, reward, done, _ = env.step(action)  
-            state = next_state 
-            robust_score += reward 
+            next_state, reward, done, _ = env.step(action) 
+            state = next_state
+            robust_score += reward
             state = next_state
             if done:
                 break
@@ -294,7 +293,7 @@ print("Robust Score " +": {}".format(robust_score/float(eval_num)))
 ax2.axhline(y=robust_score/float(eval_num), xmin=0.0, xmax=1.0, color='black', linestyle='-.', linewidth=0.9, alpha=0.9)
 
 ax2.set_ylabel('Scores')
-ax2.set_xlabel('Episode # solved in '+ str(i_episode))
+ax2.set_xlabel('Episode solved in '+ str(i_episode))
 ax2.set_title('avg-blue | validation-green:' + str(eva_score/float(eval_num))+'| robust:'+ str(robust_score/float(eval_num)))
 f.tight_layout()
 
