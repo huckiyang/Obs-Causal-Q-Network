@@ -9,7 +9,7 @@ AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 
 - note I am working on releasing more Causal Inference Q-Network ablations in process. 
 
-### 1. Example for Causal Inference Q-Network Training on Cartpole
+### 1. Example of Training Causal Inference Q-Network (CIQ) on Cartpole
 
 - Run Causal Inference Q-Network Training (`--network 1` for Treatment Inference Q-network)
 
@@ -88,6 +88,72 @@ Evaluate Score : 200.0
 ############# Noise Evaluate #############
 Using CEQNetwork_1. Number of Params: 41872
 Robust Score : 200.0
+```
+
+
+## 2. Example of Training a "Variational" Causal Inference Q-Network on Unity 3D Banana Navigator
+
+- Run Variational Causal Inference Q-Networks (VCIQs) Training (`--network 1` for Causal Variational Treatment Inference Q-network)
+
+```shell
+python 1-banana-navigator-main.py --network 1
+```
+
+- Output Logs
+
+```python
+'Academy' started successfully!
+Unity Academy name: Academy
+        Number of Brains: 1
+        Number of External Brains : 1
+        Lesson number : 0
+        Reset Parameters :
+
+Unity brain name: BananaBrain
+        Number of Visual Observations (per agent): 0
+        Vector Observation space type: continuous
+        Vector Observation space size (per agent): 37
+        Number of stacked Vector Observation: 1
+        Vector Action space type: discrete
+        Vector Action space size (per agent): 4
+        Vector Action descriptions: , , , 
+Timing Atk Ratio: 10%
+Using CEVAE_QNetwork.
+Unity Worker id: 10  T: 1  Use baseline:  0  CEVAE:  1
+With:  9.67 % timing attack
+Episode 0   Score: 0.00, Average Score: 0.00
+With:  11.0 % timing attack
+Episode 5   Score: 1.00, Average Score: 0.17
+With:  11.33 % timing attack
+Episode 10   Score: 0.00, Average Score: 0.36
+With:  10.33 % timing attack
+Episode 15   Score: 0.00, Average Score: 0.56
+...
+Episode 205   Score: 10.00, Average Score: 9.25
+With:  9.33 % timing attack
+Episode 210   Score: 9.00, Average Score: 9.70
+With:  9.0 % timing attack
+Episode 215   Score: 10.00, Average Score: 11.10
+With:  8.33 % timing attack
+Episode 220   Score: 14.00, Average Score: 10.85
+With:  12.33 % timing attack
+Episode 225   Score: 19.00, Average Score: 11.70
+With:  11.0 % timing attack
+Episode 230   Score: 18.00, Average Score: 12.10
+With:  7.67 % timing attack
+Episode 235   Score: 21.00, Average Score: 11.60
+With:  9.67 % timing attack
+Episode 240   Score: 16.00, Average Score: 12.05
+
+Environment solved in 242 episodes!     Average Score: 12.50
+Environment solved in 242 episodes!     Average Score: 12.50 +- 4.87
+############# Basic Evaluate #############
+Using CEVAE_QNetwork.
+Evaluate Score : 12.6
+############# Noise Evaluate #############
+Using CEVAE_QNetwork.
+Robust Score : 12.5
+
 ```
 
 ## Reference
