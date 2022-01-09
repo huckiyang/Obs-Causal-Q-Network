@@ -91,7 +91,7 @@ Robust Score : 200.0
 ```
 
 
-## 2. Example of Training a "Variational" Causal Inference Q-Network on Unity 3D Banana Navigator
+### 2. Example of Training a "Variational" Causal Inference Q-Network on Unity 3D Banana Navigator
 
 - Run **Variational** Causal Inference Q-Networks (VCIQs) Training (`--network 1` for Causal **Variational** Inference)
 
