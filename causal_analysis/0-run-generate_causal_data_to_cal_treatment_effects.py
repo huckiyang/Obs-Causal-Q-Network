@@ -1,12 +1,9 @@
 import os
 import time as ti
 
-# fig_prefix = 'figures/'+ti.strftime("%m%d-%H%M")
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument("--beta", type = float, default= 0.40, help="for Atk_C theshold")
 parser.add_argument("--baseline", type = int, default= 0, help= " 0 - with an attack or 1 - yes, use baseline model " )
-# parser.add_argument("-v", "--verbosity", action="count", default=0)
 parser.add_argument("--Atktype", type = int, default= 1, help= "choose attack (treatment) type, 1 - attack_F, 2 = adversarial")
 parser.add_argument("--causal", type = int, default= 1, help= "0 - Not use treatment info, 1 - use treatment info")
 parser.add_argument("--network", type = int, default=0, help="0 - DQN, 1 - CEVAE, 2 - VAE, 3 - New CEVAE")
@@ -18,7 +15,7 @@ parser.add_argument("--ratio", type = float, default= 0.2, help= "ratio of rando
 parser.add_argument("--shellratio", type = int, default= 1, help= "noise ratio for shell" )
 parser.add_argument("--num_eval", type = int, default= 5, help= "number of evaluatel" )
 args = parser.parse_args()
-# answer = args.x**args.y
+
 import sys
 sys.path.append("../")  # include the root directory as the main
 import eda
@@ -113,12 +110,12 @@ data = dowhy.datasets.linear_dataset(beta=10,
         num_samples=1000,
         treatment_is_binary=True)
 
-cevae_graph = 'graph[directed 1node[ id "v" label "v"]node[ id "y" label "y"] edge[source "v" target "y"]'
-cevae_graph += ''.join(['node[ id "Z{}" label "Z{}"] edge[ source "Z{}" target "v"]'.format(i, i, i) for i in range(256)])
-cevae_graph += ''.join(['edge[ source "Z{}" target "y"]'.format(i, i, i) for i in range(256)])
-cevae_graph += ']'
+ciq_graph = 'graph[directed 1node[ id "v" label "v"]node[ id "y" label "y"]' ##  edge[source "v" target "y"]' : only using for CGM of cevae
+ciq_graph += ''.join(['node[ id "Z{}" label "Z{}"] edge[ source "Z{}" target "v"]'.format(i, i, i) for i in range(256)])
+ciq_graph += ''.join(['edge[ source "Z{}" target "y"]'.format(i, i, i) for i in range(256)])
+ciq_graph += ']'
 
-data["gml_graph"] = cevae_graph
+data["gml_graph"] = ciq_graph
 
 model=CausalModel(
         data = df,
@@ -141,8 +138,3 @@ causal_estimate = causal_estimate_reg
 print("Robust Score " +": {}".format(robust_score/float(eval_num)))
 ax2.axhline(y=robust_score/float(eval_num), xmin=0.0, xmax=1.0, color='black', linestyle='-.', linewidth=0.9, alpha=0.9)
 
-# ax2.set_ylabel('Scores')
-# ax2.set_xlabel('Episode # solved in '+ str(i_episode))
-# ax2.set_title('avg-blue | validation-green:' + str(eva_score/float(eval_num))+'| robust:'+ str(robust_score/float(eval_num)))
-    
-# f.tight_layout()
