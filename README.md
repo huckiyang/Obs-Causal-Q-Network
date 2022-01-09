@@ -8,6 +8,8 @@ AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 [Preprint](https://arxiv.org/pdf/2102.09677.pdf) | [Slides](https://docs.google.com/presentation/d/1WOgnMKszZ6eYwxiR0jLZjrj7XbmKpEf9sNrbI8poSMg/edit?usp=sharing)
 
 
+## Reference
+
 ```bib
 @article{yang2021causal,
   title={Causal Inference Q-Network: Toward Resilient Reinforcement Learning},
@@ -17,8 +19,15 @@ AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 }
 ```
 
-### Example Training Log
+### Example for Causal Inference Q-Network Training
 
+- Run Causal Inference Q-Network Training
+
+```
+python 0-cartpole-main.py --network 1
+```
+
+- Output Logs
 
 ```python
 observation space: Box(4,)
