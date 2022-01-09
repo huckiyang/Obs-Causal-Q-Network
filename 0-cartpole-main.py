@@ -10,7 +10,7 @@ parser.add_argument("--beta", type = float, default= 0.40, help="for Atk_C thesh
 parser.add_argument("--baseline", type = int, default= 0, help= " 0 - with an attack or 1 - yes, use baseline model " )
 parser.add_argument("--Atktype", type = int, default= 1, help= "choose attack (treatment) type, 1 - attack_F, 2 = adversarial")
 parser.add_argument("--causal", type = int, default= 1, help= "0 - Not use treatment info, 1 - use treatment info")
-parser.add_argument("--network", type = int, default=0, help="0 - DQN, 1 - CEVAE, 2 - VAE, 3 - New CEVAE")
+parser.add_argument("--network", type = int, default=1, help="0 - Safe DQN, 1 - CIQ type1, 2 - CIQ type2")
 parser.add_argument("--history", type = int, default= 0, help= "0 - not show treatment history")
 parser.add_argument("--attack_network_path", type = str, default="", help="path to attack model, must be specified if use adversarial attack.")
 parser.add_argument("--evaluate", type = int, default= 1, help= "1 - yes, evaluate the trained agent, 0 - no" )
