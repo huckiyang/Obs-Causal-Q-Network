@@ -21,9 +21,9 @@ class AbstractDQN(nn.Module):
         return out
 
 
-class SimpleQNetwork(AbstractDQN):
-    """ 這個模型使用$step個frame和treatment, 當預測當前遭到攻擊，則使用prev_action 
-        注意：training時若使用prev_action, 則該筆data只會學t, 不會學y 
+class SimpleQNetwork(AbstractDQN): ## Safe Action Q network baseline considering treatments
+    """ this model use step frame and treatment (interference). Once there is a interference, the model will use prev_action 
+        attention：if training use prev_action, then the data is only subject to learn t, instead of y 
     """
     def __init__(self, state_size=4, action_size=2, fc1_units=32, fc2_units=32, step=4, num_treatment=2):
         super(SimpleQNetwork, self).__init__(state_size, action_size, fc1_units, fc2_units)
@@ -64,7 +64,7 @@ class SimpleQNetwork(AbstractDQN):
 
 
 class CEQNetwork_1(AbstractDQN):
-    """ 這個模型使用$step個frame和treatment, concat在一起, 用fc預測Q
+    """ this model use (1) step * frame and (2) treatment; then concat (1) and (2) together. Using fc to predict Q
     """ 
     def __init__(self, state_size=4, action_size=2, fc1_units=32, fc2_units=32, step=4, num_treatment=2):
         super(CEQNetwork_1, self).__init__(state_size, action_size, fc1_units, fc2_units)
@@ -110,7 +110,7 @@ class CEQNetwork_1(AbstractDQN):
 
 
 class CEQNetwork_2(AbstractDQN):
-    """ 這個模型使用$step個frame和treatment, concat在一起, 根據t4的預測結果決定要使用fc_t0 / fc_t1來預測Q
+    """ This model use (1) step*frame and (2) treatment, concat together, but the mode use the final prediction fc_t0 / fc_t1 to estimate Q value based on t4
     """
     def __init__(self, state_size=4, action_size=2, fc1_units=32, fc2_units=32, step=4, num_treatment=2):
         super(CEQNetwork_2, self).__init__(state_size, action_size, fc1_units, fc2_units)

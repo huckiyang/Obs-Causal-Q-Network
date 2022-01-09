@@ -3,22 +3,20 @@
 
 AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 
-- A non-archival and preliminary venue was presented in ICLR 2021 Self-supervision for Reinforcement Learning Workshop, spotlight, long contributed talk
 
 [Preprint](https://arxiv.org/pdf/2102.09677.pdf) | [Slides](https://docs.google.com/presentation/d/1WOgnMKszZ6eYwxiR0jLZjrj7XbmKpEf9sNrbI8poSMg/edit?usp=sharing)
 
 
-```bib
-@article{yang2021causal,
-  title={Causal Inference Q-Network: Toward Resilient Reinforcement Learning},
-  author={Yang, Chao-Han Huck and Hung, I and Danny, Te and Ouyang, Yi and Chen, Pin-Yu},
-  journal={arXiv preprint arXiv:2102.09677},
-  year={2021}
-}
+
+### Example for Causal Inference Q-Network Training
+
+- Run Causal Inference Q-Network Training
+
+```shell
+python 0-cartpole-main.py --network 1
 ```
 
-### Example Training Log
-
+- Output Logs
 
 ```python
 observation space: Box(4,)
@@ -85,4 +83,21 @@ Evaluate Score : 200.0
 ############# Noise Evaluate #############
 Using CEQNetwork_1. Number of Params: 41872
 Robust Score : 200.0
+```
+
+## Reference
+
+This fun work was initialzed when Danny and I first read the Causal Variational Model between 2018 to 2019. 
+
+Please consider to reference the paper if you find this work helpful or relative to your research. 
+
+- A non-archival and preliminary venue was presented in ICLR 2021 Self-supervision for Reinforcement Learning Workshop, spotlight, long contributed talk
+
+```bib
+@article{yang2021causal,
+  title={Causal Inference Q-Network: Toward Resilient Reinforcement Learning},
+  author={Yang, Chao-Han Huck and Hung, I and Danny, Te and Ouyang, Yi and Chen, Pin-Yu},
+  journal={arXiv preprint arXiv:2102.09677},
+  year={2021}
+}
 ```
