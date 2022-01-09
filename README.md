@@ -7,7 +7,21 @@ AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 [Preprint](https://arxiv.org/pdf/2102.09677.pdf) | [Slides](https://docs.google.com/presentation/d/1WOgnMKszZ6eYwxiR0jLZjrj7XbmKpEf9sNrbI8poSMg/edit?usp=sharing) | [Colab Demo](https://colab.research.google.com/drive/1W0muo9IQMsQUIc4nLbB5VOKg7aXuWFR2?usp=sharing) |
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 
-- note I am working on releasing more Causal Inference Q-Network ablations in process. 
+### Environment Setup
+
+- option 1 (from conda .yml under `conda 10.2` and `python 3.6`)
+
+```shell
+conda env create -f obs-causal-q-conda.yml 
+```
+
+- option 2 (from a clean python 3.6 and please follow the [setup](https://github.com/udacity/deep-reinforcement-learning#dependencies) of [UnityAgent 3D](https://github.com/Unity-Technologies/ml-agents) environment )
+
+```shell
+pip install torch torchvision torchaudio
+pip install dowhy
+pip install gym
+```
 
 ### 1. Example of Training Causal Inference Q-Network (CIQ) on Cartpole
 
