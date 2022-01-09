@@ -17,7 +17,7 @@ AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 python 0-cartpole-main.py --network 1
 ```
 
-- Network Architecture
+- Causal Inference Q-Network Architecture
 
 <img src="https://github.com/huckiyang/Obs-Causal-Q-Network/blob/main/imgs/ciq_cartpole.png" width="500">
 
