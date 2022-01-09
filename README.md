@@ -4,7 +4,7 @@
 AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 
 
-[Preprint](https://arxiv.org/pdf/2102.09677.pdf) | [Slides](https://docs.google.com/presentation/d/1WOgnMKszZ6eYwxiR0jLZjrj7XbmKpEf9sNrbI8poSMg/edit?usp=sharing) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1W0muo9IQMsQUIc4nLbB5VOKg7aXuWFR2?usp=sharing] | 
+[Preprint](https://arxiv.org/pdf/2102.09677.pdf) | [Slides](https://docs.google.com/presentation/d/1WOgnMKszZ6eYwxiR0jLZjrj7XbmKpEf9sNrbI8poSMg/edit?usp=sharing) | [Colab Demo](https://colab.research.google.com/drive/1W0muo9IQMsQUIc4nLbB5VOKg7aXuWFR2?usp=sharing) | 
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 
 ### Environment Setup
