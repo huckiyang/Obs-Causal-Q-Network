@@ -149,5 +149,5 @@ dependencies:
     - werkzeug==1.0.1
     - widgetsnbextension==3.5.1
     - zipp==3.4.0
-prefix: /home/ma-prof/anaconda3/envs/banana
+prefix: /home/huck/anaconda3/envs/banana
 
