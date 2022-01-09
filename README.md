@@ -6,7 +6,7 @@ AAAI 2022 - Training a Resilient Q-Network against Observational Interference
 
 [Preprint](https://arxiv.org/pdf/2102.09677.pdf) | [Slides](https://docs.google.com/presentation/d/1WOgnMKszZ6eYwxiR0jLZjrj7XbmKpEf9sNrbI8poSMg/edit?usp=sharing) | [Colab Demo](https://colab.research.google.com/drive/1W0muo9IQMsQUIc4nLbB5VOKg7aXuWFR2?usp=sharing)
 
-
+- note I am working on releasing more Causal Inference Q-Network in process. 
 
 ### Example for Causal Inference Q-Network Training
 
