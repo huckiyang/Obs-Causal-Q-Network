@@ -99,6 +99,10 @@ Robust Score : 200.0
 python 1-banana-navigator-main.py --network 1
 ```
 
+- Variational Causal Inference Q-Network Architecture
+
+<img src="https://github.com/huckiyang/Obs-Causal-Q-Network/blob/main/imgs/variational_ciq.png" width="500">
+
 - Output Logs
 
 ```python
