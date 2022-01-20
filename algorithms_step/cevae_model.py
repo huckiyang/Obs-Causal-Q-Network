@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 Implement the Q-network used by the agents
-
-
-@author: udacity, ucaiado
+modified from ucaiado
 
 Created on 10/23/2018
+causal variational model for deep q network
 """
 
 import torch
