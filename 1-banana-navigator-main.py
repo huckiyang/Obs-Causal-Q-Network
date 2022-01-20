@@ -231,40 +231,40 @@ ax12.tick_params(axis='y', labelcolor=color)
 ax2.plot(np.arange(len(na_mu)), na_mu)
 ax2.fill_between(np.arange(len(na_mu)), na_mu+na_sigma, na_mu-na_sigma, facecolor='gray', alpha=0.1)
 
+# You need some tuning for the clean environment when using network 3 for Linux banana environments on banana_model.py
+# if args.evaluate == 1:
+#     # reset the environment
+#     print('############# Basic Evaluate #############', end = '\n')
+#         # get the default brain
+#     brain_name = env.brain_names[0]
+#     brain = env.brains[brain_name]
+#     env_info = env.reset(train_mode=False)[brain_name]
+#     # examine the state space 
+#     state = env_info.vector_observations[0]
 
-if args.evaluate == 1:
-    # reset the environment
-    print('############# Basic Evaluate #############', end = '\n')
-        # get the default brain
-    brain_name = env.brain_names[0]
-    brain = env.brains[brain_name]
-    env_info = env.reset(train_mode=False)[brain_name]
-    # examine the state space 
-    state = env_info.vector_observations[0]
+#     eva_agent = DQNAgent(state_size=state_size, action_size=action_size, seed=0, select_network=args.network)
+#     # load the weights from file
+#     eva_log = data_prefix + 'checkpoint_' + s_model +'.pth'# '0626-1919checkpoint_dqn.pth'
+#     eva_agent.qnetwork_local.load_state_dict(torch.load(eva_log))
+#     eva_score = 0.
+#     for i in range(eval_num):
+#         while True:
+# #             print(state,"shape:" ,state.shape)
+#             action, act_vals = eva_agent.act(state, eps=0.00)
+#             env_info = env.step(action)[brain_name]  
+#             next_state = env_info.vector_observations[0]   # geti the next state
+#             reward = env_info.rewards[0]                   # get the reward
+#             done = env_info.local_done[0]  
+#             state = next_state 
+#             eva_score += reward 
+#             state = next_state
+#             if done:
+#                 break
+#         env_info = env.reset(train_mode=False)[brain_name]
 
-    eva_agent = DQNAgent(state_size=state_size, action_size=action_size, seed=0, select_network=args.network)
-    # load the weights from file
-    eva_log = data_prefix + 'checkpoint_' + s_model +'.pth'# '0626-1919checkpoint_dqn.pth'
-    eva_agent.qnetwork_local.load_state_dict(torch.load(eva_log))
-    eva_score = 0.
-    for i in range(eval_num):
-        while True:
-#             print(state,"shape:" ,state.shape)
-            action, act_vals = eva_agent.act(state, eps=0.00)
-            env_info = env.step(action)[brain_name]  
-            next_state = env_info.vector_observations[0]   # geti the next state
-            reward = env_info.rewards[0]                   # get the reward
-            done = env_info.local_done[0]  
-            state = next_state 
-            eva_score += reward 
-            state = next_state
-            if done:
-                break
-        env_info = env.reset(train_mode=False)[brain_name]
-
-print("Evaluate Score "+": {}".format(eva_score/float(eval_num)))
+# print("Evaluate Score "+": {}".format(eva_score/float(eval_num)))
     
-ax2.axhline(y=eva_score/float(eval_num), xmin=0.0, xmax=1.0, color='green', linestyle='--', linewidth=0.9, alpha=0.9)
+# ax2.axhline(y=eva_score/float(eval_num), xmin=0.0, xmax=1.0, color='green', linestyle='--', linewidth=0.9, alpha=0.9)
 
 if args.evaluate == 1:
     # reset the environment
