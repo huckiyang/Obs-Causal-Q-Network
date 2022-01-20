@@ -66,7 +66,7 @@ class SimpleQNetwork(AbstractDQN):
 
 
 class CEQNetwork_1(AbstractDQN):
-    """ 這個模型使用$step個frame和treatment, concat在一起, 用fc預測Q
+    """ using $step frame and treatment, concat together, using fc to predict Q
     """ 
     def __init__(self, state_size=4, action_size=2, fc1_units=64, fc2_units=64, step=2, num_treatment=2):
         super(CEQNetwork_1, self).__init__(state_size, action_size, fc1_units, fc2_units)
