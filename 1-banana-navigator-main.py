@@ -182,7 +182,7 @@ for i_episode in range(n_episodes):
     if i_episode % 5 == 0:
         print("With: ",round(100*cnt/total_cnt,2),"% timing attack", end = "\n")
         print('\rEpisode {}   Score: {:.2f}, Average Score: {:.2f}'.format(i_episode, score, np.mean(scores_window), ))
-    if np.mean(scores_window)>=12.5:
+    if np.mean(scores_window)>=12.5: # this is a demo code, please using mean test for final model evaluation e.g., https://github.com/huckiyang/Obs-Causal-Q-Network/blob/main/0-cartpole-main.py#L180
         s_msg = '\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'
         print(s_msg.format(i_episode, np.mean(scores_window)))        
         break
