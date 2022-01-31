@@ -1,4 +1,4 @@
-#   Obs-Causal-Q-Network
+#   Obs-Causal-Q-Network-Demo
 
 
 AAAI 2022 - Training a Resilient Q-Network against Observational Interference
