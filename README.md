@@ -181,10 +181,10 @@ Please consider to reference the paper if you find this work helpful or relative
 - A non-archival and preliminary venue was presented in ICLR 2021 [Self-supervision for Reinforcement Learning Workshop](https://sslrlworkshop.github.io/), spotlight, long contributed talk. We appreciate the research community and the orgainzers.
 
 ```bib
-@article{yang2021causal,
-  title={Causal Inference Q-Network: Toward Resilient Reinforcement Learning},
+@article{yang2022training,
+  title={Training a Resilient Q-network against Observational Interference},
   author={Yang, Chao-Han Huck and Hung, I and Danny, Te and Ouyang, Yi and Chen, Pin-Yu},
-  journal={arXiv preprint arXiv:2102.09677},
-  year={2021}
+  journal={Proceedings of AAAI-2022},
+  year={2022}
 }
 ```
