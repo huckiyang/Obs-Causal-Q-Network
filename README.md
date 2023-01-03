@@ -31,7 +31,7 @@ python 0-cartpole-main.py --network 1
 
 - Causal Inference Q-Network Architecture
 
-<img src="https://github.com/huckiyang/Obs-Causal-Q-Network/blob/main/imgs/ciq_cartpole.png" width="500">
+<img src="https://github.com/huckiyang/treatment-causal-transformer/blob/main/tlt.png" width="500">
 
 - Output Logs
 
